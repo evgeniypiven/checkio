@@ -1,0 +1,20 @@
+def checkio(n, m):
+    c = bin(n)[2:]
+    k = bin(m)[2:]
+    if len(c) > len(k):
+        k = "0" * (len( c ) - len(k)) + k
+    elif len(k) > len(c):
+        c = "0" * (len(k) - len(c)) + c
+    s = 0
+    for i, n in list(zip(c, k)):
+	   if int(i) == 0 and int(n) == 1:
+           s += 1
+       elif int(i) == 1 and int(n) == 0:
+           s += 1
+    return s   
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert checkio(117, 17) == 3, "First example"
+    assert checkio(1, 2) == 2, "Second example"
+    assert checkio(16, 15) == 5, "Third example"
