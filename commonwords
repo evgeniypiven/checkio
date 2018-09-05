@@ -1,0 +1,17 @@
+def checkio(first, second):
+    first_list = [x for x in first.split(",")]
+    second_list = [x for x in second.split(",")]
+    new_list = []
+    for word in first_list:
+        if word in second_list:
+            new_list.append(word)
+    new_list = sorted(new_list)
+    result = ",".join(new_list)
+    
+    return result
+    
+
+if __name__ == '__main__':
+    assert checkio("hello,world", "hello,earth") == "hello", "Hello"
+    assert checkio("one,two,three", "four,five,six") == "", "Too different"
+    assert checkio("one,two,three", "four,five,one,two,six,three") == "one,three,two", "1 2 3"
