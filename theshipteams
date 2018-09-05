@@ -1,0 +1,41 @@
+def two_teams(sailors):
+    general_list = []
+    first_list = []
+    second_list = []
+    for key in sailors.keys():
+        if 20 <= sailors[key] <= 40:
+            second_list.append(key)
+        else:
+            first_list.append(key)       
+    first_list.sort(key=str.lower)
+    second_list.sort(key=str.lower)
+    general_list.append(first_list)
+    general_list.append(second_list)
+    return general_list
+            
+        
+    
+
+if __name__ == '__main__':
+    print("Example:")
+    print(two_teams({'Smith': 34, 'Wesson': 22, 'Coleman': 45, 'Abrahams': 19}))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert two_teams({
+        'Smith': 34, 
+        'Wesson': 22, 
+        'Coleman': 45, 
+        'Abrahams': 19}) == [
+            ['Abrahams', 'Coleman'], 
+            ['Smith', 'Wesson']
+            ]
+
+    assert two_teams({
+        'Fernandes': 18,
+        'Johnson': 22,
+        'Kale': 41,
+        'McCortney': 54}) == [
+            ['Fernandes', 'Kale', 'McCortney'], 
+            ['Johnson']
+            ]
+    print("Coding complete? Click 'Check' to earn cool rewards!")
