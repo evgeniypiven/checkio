@@ -1,0 +1,15 @@
+def between_markers(text: str, begin: str, end: str) -> str:
+    try:
+        if begin in text:
+            if end in text:
+                return text[(text.index(begin) + len(begin)):text.index(end)]   
+            else:
+                return text[(text.index(begin) + len(begin)):] 
+        else:
+            if end in text:
+                return text[:text.index(end)]
+            else:
+                return text[:]
+    except ValueError:
+        return ""     
+    
