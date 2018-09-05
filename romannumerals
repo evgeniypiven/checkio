@@ -1,0 +1,52 @@
+def checkio(data):
+    general_string = ""
+    if data // 1000:
+        general_string += "M" * (data // 1000)
+        data -= (data // 1000) * 1000
+    if data // 900:
+        general_string += "CM"
+        data -= 900
+    if data // 400 == 1 and data % 400 < 100:
+        general_string += "CD"
+        data -= 400
+    if data // 500 == 1:
+        general_string += "D"
+        data -= 500
+    if data // 100:
+        general_string += "C" * (data // 100)
+        data -= (data // 100) * 100
+    if data // 90:
+        general_string += "XC"
+        data -= 90
+    if data // 40 == 1 and data % 40 < 10:
+        general_string += "XL"
+        data -= 40
+    if data // 50:
+        general_string += "L"
+        data -= 50
+    if data // 10:
+        general_string += "X" * (data // 10)
+        data -= (data // 10) * 10
+    if data // 9:
+        general_string += "IX" 
+        data -= 9
+    if data // 4 == 1 and data % 4 == 0:
+        general_string += "IV"
+        data -= 4
+    if data // 5:
+        general_string += "V"
+        data -= 5
+    if data // 1:
+        general_string +=  "I" * (data // 1) 
+        data -= (data // 1) * 1
+    
+        
+    return general_string
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert checkio(6) == 'VI', '6'
+    assert checkio(76) == 'LXXVI', '76'
+    assert checkio(499) == 'CDXCIX', '499'
+    assert checkio(3888) == 'MMMDCCCLXXXVIII', '3888'
+    print('Done! Go Check!')
