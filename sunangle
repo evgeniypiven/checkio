@@ -1,0 +1,20 @@
+def sun_angle(time):
+    hour = int(time[:2])
+    minutes = int(time[3:])
+    if hour < 6 or hour > 18:
+        return "I don't see the sun!"
+    if hour == 18 and minutes > 0:
+        return "I don't see the sun!"
+    angle_of_hours = (hour - 6) * 15
+    angle_of_minutes = minutes * 0.25
+    return angle_of_hours + angle_of_minutes
+
+if __name__ == '__main__':
+    print("Example:")
+    print(sun_angle("07:00"))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert sun_angle("07:00") == 15
+    assert sun_angle("01:23") == "I don't see the sun!"
+    print("Coding complete? Click 'Check' to earn cool rewards!")
+    
