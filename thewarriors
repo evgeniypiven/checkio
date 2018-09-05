@@ -1,0 +1,31 @@
+class Warrior:
+    def __init__(self, health=50, attack=5):
+        self.health = health
+        self.attack = attack
+   
+        
+    def hit(self, attack):
+        self.health = self.health - attack
+    @property
+    def is_alive(self):
+        return True if self.health > 0 else False
+        
+class Knight(Warrior):
+    def __init__(self, health=50, attack=7):
+        super().__init__(health, attack)
+ 
+    
+       
+
+def fight(unit_1, unit_2):
+    while True:
+        unit_2.hit(unit_1.attack)
+        if unit_2.is_alive:
+            unit_1.hit(unit_2.attack)
+            if unit_1.is_alive:
+                continue
+            else:
+                return False
+        else:
+            return True
+        
