@@ -1,0 +1,66 @@
+def navigation(seaside):
+    row = 0
+    column = 0
+    for i in range(len(seaside)):
+        for j in range(len(seaside[i])):
+            if seaside[i][j] == "Y":
+                row, column = i, j    
+            else:
+                continue
+
+    steps = 0   
+    for i in range(len(seaside)):
+        for j in range(len(seaside[i])):  
+            if seaside[i][j] == "C" or seaside[i][j] == "S" or seaside[i][j] == "M":
+                if row == i:
+                    steps += abs(column - j)
+                    continue
+                if column == j:
+                    steps += abs(row - i)
+                    continue
+                if abs(row - i) == 1:
+                    steps += abs(column - j)
+                    continue
+                if abs(column - j) == 1:
+                    steps += abs(row - i)
+                    continue
+                if abs(row - i) > abs(column - j):
+                    steps += abs(row - i)
+                    continue
+                else:
+                    steps += abs(column - j)
+                    continue    
+                if abs(row - i) == abs(column - j):
+                    continue
+                if abs(row - i) > 4 or abs(column - j) > 4:
+                    steps += 1
+                else:
+                    continue
+                          
+            
+    return steps
+
+if __name__ == '__main__':
+    print("Example:")
+    print(navigation([['Y', 0, 0, 0, 'C'],
+                      [ 0,  0, 0, 0,  0],
+                      [ 0,  0, 0, 0,  0],
+                      ['M', 0, 0, 0, 'S']]))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert navigation([['Y', 0, 0, 0, 'C'],
+                       [ 0,  0, 0, 0,  0],
+                       [ 0,  0, 0, 0,  0],
+                       ['M', 0, 0, 0, 'S']]) == 11
+
+    assert navigation([[ 0,  0, 'C'],
+                       [ 0, 'S', 0],
+                       ['M','Y', 0]]) == 4
+
+    assert navigation([[ 0,  0, 0,  0,  0,  0,  0],
+                       [ 0,  0, 0, 'M', 0, 'S', 0],
+                       [ 0,  0, 0,  0,  0,  0,  0],
+                       [ 0,  0, 0, 'C', 0,  0,  0],
+                       [ 0, 'Y',0,  0,  0,  0,  0],
+                       [ 0,  0, 0,  0,  0,  0,  0]]) == 9
+    print("Coding complete? Click 'Check' to earn cool rewards!")
